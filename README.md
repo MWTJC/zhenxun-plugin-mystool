@@ -6,72 +6,56 @@
   \/_/  \/_/   \/_____/   \/_____/     \/_/   \/_____/   \/_____/   \/_____/
 ```
 
-[![CodeFactor](https://www.codefactor.io/repository/github/ljzd-pro/nonebot-plugin-mystool/badge?style=for-the-badge)](https://www.codefactor.io/repository/github/ljzd-pro/nonebot-plugin-mystool)
-[![最新发行版](https://img.shields.io/github/v/release/Ljzd-PRO/nonebot-plugin-mysTool?logo=python&style=for-the-badge)](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/releases/latest)
-[![最后提交](https://img.shields.io/github/last-commit/Ljzd-PRO/nonebot-plugin-mysTool/dev?style=for-the-badge)](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/commits/dev)
+# [此为真寻bot适配版](https://github.com/HibiKier/zhenxun_bot)
+# 经测试，Win下基于Python3.8的真寻不能运行此插件，3.9可以。
+原作者Ljzd-PRO 版本跳转[nonebot-plugin-mystool](https://github.com/Ljzd-PRO/nonebot-plugin-mystool)
+ - 若登录等待输入验证码或手机号时间过短，请在ENV.DEV文件修改SESSION_EXPIRE_TIMEOUT
+ - 真寻食用直接把src目录下nonebot_plugin_mystool文件夹丢进真寻插件文件夹。
+ - 详细设置请编辑插件目录下的 config.py
+ - 具体设置请查看[🔗官方Wiki 文档](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/wiki)
 
-# mysTool - 米游社辅助工具插件
+### 改动内容
+基于2022年12月31日版（v0.2.2），改版适配真寻bot。经测试，功能大部分正常。
+具体改动如下：
+ - init.py添加真寻版帮助索引，并更改功能触发指示以避免功能冲突。
+ - help.py更改帮助模块触发词与名称为“米游社帮助”以避免和真寻的帮助冲突。
+ - login.py第205行添加超时提示（请与ENV.DEV文件的SESSION_EXPIRE_TIMEOUT同步修改）。
+ - timing.py更改签到触发词避免和真寻的签到功能冲突。
 
-## 📣 更新内容
-### 2023.9.10 - v1.3.3
-- 修复无法添加兑换计划的问题
-- 修复商品兑换时间不正确的问题
+基于2023年1月17日版（v0.2.3），重新检查适配。
 
-### 2023.8.30 - v1.3.1
-- 登录功能增加黑名单/白名单功能 #178
-  > [插件偏好设置 - enable_blacklist](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/wiki/Configuration-Preference#enable_blacklist)
-- 登录功能支持使用第三方打码平台进行人机验证（暂不支持GT4）
-- 修复游戏签到人机验证无效的问题 #163
-- 便笺体力除了达到阈值以外，体力已满也会提醒 #163
-- 增加 `geetest_params`，用于填写人机验证打码平台API需要传入的URL参数 by @Joseandluue
-  > [插件偏好设置 - geetest_params](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/wiki/Configuration-Preference#geetest_params)
+基于2023年3月19日版（v0.2.4），跟进。
 
-## ⚡ 功能和特性
+2023年4月1日（v0.2.5），跟进。
 
-- 支持QQ聊天和QQ频道
-- 短信验证登录，免抓包获取 Cookie
-- 自动完成每日米游币任务
-- 自动进行游戏签到
-- 可制定米游币商品兑换计划，到点兑换（因加入了人机验证，成功率较低）
-- 可支持多个 QQ 账号，每个 QQ 账号可绑定多个米哈游账户
-- QQ 推送执行结果通知
-- 原神、崩坏：星穹铁道状态便笺通知
-- 可为登录、每日米游币任务、游戏签到配置人机验证打码平台
-- 可配置用户黑名单/白名单
+2023年5月21日（v0.2.9），跟进。
 
-## 📖 使用说明
+2023年8月5日（v1.2.0），跟进。
 
-### 🛠️ NoneBot2 机器人部署和插件安装
+ - 注：原作者在本版实装了qq频道（qqguid）代码，但真寻目前尚未实装相关适配器，造成启动时插件载入失败，所以需要手动到
+[qqguild](https://github.com/nonebot/adapter-qqguild)
+去下载whl文件对频道插件进行安装，方可正常载入此插件。
 
-请查看 -> [🔗Installation](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/wiki/Installation)
+2023年8月14日 （v1.2.3），跟进。
+
+2023年8月17日 （v1.2.4），跟进。
+
+2023年8月23日 （v1.3.0），跟进。
+
+2023年9月5日 （v1.3.2），跟进。
+
+2023年9月12日 （v1.3.3），跟进。
+
+2023年9月12日 （v1.3.3），复原。
+ - 注：本人眼瞎，没看见v1.0更新时，原作者在`plugin_data.json`中实装了`command_start`字段（即自定义命令前缀），代替了本fork的作用，故本人将所有更改复原，避免与原repo功能重复与矛盾。此版与原作者代码完全相同，下一版将尝试解决nonebot版本不兼容问题。
+>
+
+### 碎碎念
+ - 本人运行ayakasuki佬的改版的插件并不成功，故有此repo。
+ - 本插件最终效果仅达到能用水平。
+ - 如有适配造成的功能问题，请提issue，本人将尝试解决。
+
 
 ### 📖 插件具体使用说明
 
-请查看 -> [🔗Wiki 文档](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/wiki)
-
-### ❓ 获取插件帮助信息
-
-#### 插件命令
-
-```
-/帮助
-```
-
-> ⚠️ 注意 此处没有使用 [🔗 插件命令头](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/wiki/Configuration-Config#commandstart)
-
-## 其他
-
-### 贡献
-<a href="https://github.com/Ljzd-PRO/nonebot-plugin-mystool/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Ljzd-PRO/nonebot-plugin-mystool&max=1000" alt="贡献者"/>
-</a>
-
-### 🔨 开发版分支
-[**🔨dev**](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/tree/dev)
-
-### 📃 源码说明
-[📃Source-Structure](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/wiki/Source-Structure)
-
-### 适配 [绪山真寻Bot](https://github.com/HibiKier/zhenxun_bot) 的分支
-- https://github.com/MWTJC/zhenxun-plugin-mystool
-- https://github.com/ayakasuki/nonebot-plugin-mystool
+请查看原作者文档 -> [🔗Wiki 文档](https://github.com/Ljzd-PRO/nonebot-plugin-mystool/wiki)
